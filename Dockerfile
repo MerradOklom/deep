@@ -13,7 +13,8 @@ COPY --from=BUILD_IMAGE /app/node_modules /app/node_modules
 
 RUN addgroup -g 1014 appuser && \
     adduser -u 10001 -G appuser -s /bin/sh --disabled-password appuser && \
-    chown -R appuser:appuser /app
+    chown -R appuser:appuser /app && \
+    mkdir -p /app/logs
 
 USER 10001
 
