@@ -11,11 +11,11 @@ COPY --from=BUILD_IMAGE /app/public /app/public
 COPY --from=BUILD_IMAGE /app/*.wasm /app/
 COPY --from=BUILD_IMAGE /app/node_modules /app/node_modules
 
-RUN groupadd -g 10014 appuser && \
-    useradd -u 10014 -g appuser -s /bin/sh appuser && \
+RUN addgroup -g 1014 appuser && \
+    adduser -u 10001 -G appuser -s /bin/sh appuser && \
     chown -R appuser:appuser /app
 
-USER appuser
+USER 10001
 
 WORKDIR /app
 
