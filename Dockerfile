@@ -12,7 +12,7 @@ COPY --from=BUILD_IMAGE /app/*.wasm /app/
 COPY --from=BUILD_IMAGE /app/node_modules /app/node_modules
 
 RUN addgroup -g 1014 appuser && \
-    adduser -u 10001 -G appuser -s /bin/sh appuser && \
+    adduser -u 10001 -G appuser -s /bin/sh --disabled-password appuser && \
     chown -R appuser:appuser /app
 
 USER 10001
